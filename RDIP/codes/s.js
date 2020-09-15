@@ -29,4 +29,32 @@ function language(){
     else{
         corpus=hincorp;
     }
+division=document.getElementById("w_buttons");
+    division.innerHTML="";
+    if(document.getElementById("lang").value=="english"){
+        corpus=engcorp;
+    }
+    else{
+        corpus=hincorp;
+    }
+    index=Math.floor(Math.random()*corpus.length);
+    sentence=corpus[index][0];
+    words=sentence.split(" ");
+    console.log(words);
+    for(i=0;i<words.length;i++){
+        ind=Math.floor(Math.random()*words.length);
+        temp=words[ind];
+        words[ind]=words[i];
+        words[i]=temp;
+    }
+    but=[]
+    for(i=0;i<words.length;i++){
+        but[i]=document.createElement("input");
+        but[i].type="button";
+        but[i].value=words[i];
+        but[i].style.display="inline";
+        but[i].style.margin="0px 5px";
+        division.appendChild(but[i]);
+    }
+    console.log(but);
 }
